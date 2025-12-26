@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Mail, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github, Instagram, Phone } from "lucide-react";
 
 const socialLinks = [
-  { name: "Email", icon: Mail, href: "mailto:hello@example.com" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-  { name: "GitHub", icon: Github, href: "https://github.com" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
+  { name: "Email", icon: Mail, href: "mailto:ntnyjsph@gmail.com" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://in.linkedin.com/in/ntnyjsph" },
+  { name: "GitHub", icon: Github, href: "https://github.com/ntnyjsph/" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/ntnyjsph/" },
+  { name: "Phone", icon: Phone, href: "tel:9500330179" },
 ];
 
 const Contact = () => {
@@ -33,24 +34,24 @@ const Contact = () => {
     <footer
       id="contact"
       ref={sectionRef}
-      className="py-32 px-6 md:px-12 lg:px-24 border-t border-border"
+      className="py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-16 xl:px-24 border-t border-border"
     >
-      <div className="max-w-5xl">
-        <div className="grid md:grid-cols-2 gap-16 md:gap-20">
+      <div className="w-full">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
           <div 
             className={`transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="text-muted-foreground font-body text-sm tracking-widest uppercase mb-8 block">
+            <span className="text-muted-foreground font-body text-sm tracking-widest uppercase mb-6 md:mb-8 block">
               Get in Touch
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6">
               Let's build
               <br />
               <span className="italic">something great</span>
             </h2>
-            <p className="font-body text-muted-foreground leading-relaxed max-w-md">
+            <p className="font-body text-muted-foreground leading-relaxed max-w-md text-sm md:text-base">
               Have a project in mind? I'd love to hear about it. 
               Let's discuss how automation can transform your workflows.
             </p>
@@ -61,20 +62,20 @@ const Contact = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-4 md:gap-6">
               {socialLinks.map((link, index) => {
                 const Icon = link.icon;
                 return (
                   <a
                     key={link.name}
                     href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center w-12 h-12 rounded-full border border-border hover:border-foreground hover:bg-foreground transition-all duration-300"
+                    target={link.name !== "Phone" && link.name !== "Email" ? "_blank" : undefined}
+                    rel={link.name !== "Phone" && link.name !== "Email" ? "noopener noreferrer" : undefined}
+                    className="group flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border border-border hover:border-foreground hover:bg-foreground transition-all duration-300"
                     style={{ transitionDelay: `${index * 50}ms` }}
                     aria-label={link.name}
                   >
-                    <Icon className="w-5 h-5 group-hover:text-background transition-colors duration-300" />
+                    <Icon className="w-4 h-4 md:w-5 md:h-5 group-hover:text-background transition-colors duration-300" />
                   </a>
                 );
               })}
@@ -84,14 +85,14 @@ const Contact = () => {
         
         {/* Footer bottom */}
         <div 
-          className={`mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-all duration-700 delay-300 ${
+          className={`mt-16 md:mt-24 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4 transition-all duration-700 delay-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <p className="font-body text-sm text-muted-foreground">
+          <p className="font-body text-xs md:text-sm text-muted-foreground">
             © {new Date().getFullYear()} All rights reserved.
           </p>
-          <p className="font-body text-sm text-muted-foreground">
+          <p className="font-body text-xs md:text-sm text-muted-foreground">
             Built with precision & purpose.
           </p>
         </div>

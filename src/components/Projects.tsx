@@ -53,11 +53,11 @@ const Projects = () => {
     <section
       id="work"
       ref={sectionRef}
-      className="py-32 px-6 md:px-12 lg:px-24 border-t border-border"
+      className="py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-16 xl:px-24 border-t border-border"
     >
-      <div className="max-w-5xl">
+      <div className="w-full">
         <span 
-          className={`text-muted-foreground font-body text-sm tracking-widest uppercase mb-8 block transition-all duration-700 ${
+          className={`text-muted-foreground font-body text-sm tracking-widest uppercase mb-6 md:mb-8 block transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -65,7 +65,7 @@ const Projects = () => {
         </span>
         
         <h2 
-          className={`font-heading text-4xl md:text-5xl leading-tight mb-16 transition-all duration-700 delay-100 ${
+          className={`font-heading text-3xl sm:text-4xl md:text-5xl leading-tight mb-10 md:mb-16 transition-all duration-700 delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -74,34 +74,34 @@ const Projects = () => {
         </h2>
 
         {/* Bento Grid for Projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
           {projects.map((project, index) => (
             <div
               key={project.title}
               className={`${
                 project.size === "large" ? "md:col-span-2" : "col-span-1"
-              } group relative bg-card border border-border rounded-lg p-8 md:p-10 hover-lift cursor-pointer transition-all duration-700 ${
+              } group relative bg-card border border-border rounded-lg p-6 md:p-8 lg:p-10 hover-lift cursor-pointer transition-all duration-700 ${
                 isVisible 
                   ? "opacity-100 translate-y-0" 
                   : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${150 + index * 100}ms` }}
             >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6">
                 <div className="flex-1">
-                  <span className="font-body text-xs tracking-widest text-muted-foreground uppercase mb-3 block">
+                  <span className="font-body text-[10px] md:text-xs tracking-widest text-muted-foreground uppercase mb-2 md:mb-3 block">
                     {project.category}
                   </span>
-                  <h3 className="font-heading text-2xl md:text-3xl mb-3 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="font-heading text-xl sm:text-2xl md:text-3xl mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="font-body text-muted-foreground leading-relaxed max-w-xl">
+                  <p className="font-body text-muted-foreground leading-relaxed max-w-xl text-sm md:text-base">
                     {project.description}
                   </p>
                 </div>
                 
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border group-hover:border-foreground group-hover:bg-foreground transition-all duration-300">
-                  <ArrowUpRight className="w-4 h-4 group-hover:text-background transition-colors duration-300" />
+                <div className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full border border-border group-hover:border-foreground group-hover:bg-foreground transition-all duration-300 shrink-0">
+                  <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:text-background transition-colors duration-300" />
                 </div>
               </div>
               
