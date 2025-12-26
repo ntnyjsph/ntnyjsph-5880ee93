@@ -1,6 +1,6 @@
 import { ArrowDown } from "lucide-react";
 const Hero = () => {
-  return <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-20">
+  return <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-20 text-xl font-extrabold">
       <div className="max-w-5xl">
         <p className="text-muted-foreground font-body text-sm tracking-widest normal-case mb-6 animate-fade-up">​Hi there, I'm Antony       </p>
         
