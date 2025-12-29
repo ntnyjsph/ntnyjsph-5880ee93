@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Work", href: "#work" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", target: "about" },
+  { name: "Skills", target: "skills" },
+  { name: "Work", target: "work" },
+  { name: "Contact", target: "contact" },
 ];
 
 const Navigation = () => {
@@ -20,8 +20,12 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = () => {
+  const handleNavClick = (target: string) => {
     setIsMobileMenuOpen(false);
+    const element = document.getElementById(target);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -44,12 +48,12 @@ const Navigation = () => {
           <ul className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => (
               <li key={item.name}>
-                <a
-                  href={item.href}
+                <button
+                  onClick={() => handleNavClick(item.target)}
                   className="font-body text-sm tracking-wide text-muted-foreground hover:text-foreground link-underline transition-colors duration-300"
                 >
                   {item.name}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
@@ -79,10 +83,9 @@ const Navigation = () => {
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
           {navItems.map((item, index) => (
-            <a
+            <button
               key={item.name}
-              href={item.href}
-              onClick={handleNavClick}
+              onClick={() => handleNavClick(item.target)}
               className={`font-heading text-3xl tracking-tight transition-all duration-500 ${
                 isMobileMenuOpen
                   ? "opacity-100 translate-y-0"
@@ -91,7 +94,7 @@ const Navigation = () => {
               style={{ transitionDelay: `${index * 75}ms` }}
             >
               {item.name}
-            </a>
+            </button>
           ))}
         </div>
       </div>
