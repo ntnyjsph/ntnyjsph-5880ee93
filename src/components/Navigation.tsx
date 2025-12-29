@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { name: "About", target: "about" },
@@ -45,18 +46,21 @@ const Navigation = () => {
             Antony's Portfolio
           </a>
 
-          <ul className="hidden md:flex items-center gap-6 lg:gap-8">
-            {navItems.map((item) => (
-              <li key={item.name}>
-                <button
-                  onClick={() => handleNavClick(item.target)}
-                  className="font-body text-sm tracking-wide text-muted-foreground hover:text-foreground link-underline transition-colors duration-300"
-                >
-                  {item.name}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <ul className="flex items-center gap-6 lg:gap-8">
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <button
+                    onClick={() => handleNavClick(item.target)}
+                    className="font-body text-sm tracking-wide text-muted-foreground hover:text-foreground link-underline transition-colors duration-300"
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <ThemeToggle />
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -96,6 +100,16 @@ const Navigation = () => {
               {item.name}
             </button>
           ))}
+          <div
+            className={`transition-all duration-500 ${
+              isMobileMenuOpen
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
+            }`}
+            style={{ transitionDelay: `${navItems.length * 75}ms` }}
+          >
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </>

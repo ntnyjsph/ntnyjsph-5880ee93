@@ -92,7 +92,7 @@ const Projects = () => {
                   <span className="font-body text-[10px] md:text-xs tracking-widest text-muted-foreground uppercase mb-2 md:mb-3 block">
                     {project.category}
                   </span>
-                  <h3 className="font-heading text-xl sm:text-2xl md:text-3xl mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="font-heading text-xl sm:text-2xl md:text-3xl mb-2 md:mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                   <p className="font-body text-muted-foreground leading-relaxed max-w-xl text-sm md:text-base">
