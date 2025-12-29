@@ -194,8 +194,8 @@ const Hero = () => {
           eliminate repetitive tasks, and unlock efficiency for businesses ready to scale.
         </motion.p>
         
-        <motion.a 
-          href="#about" 
+        <motion.button 
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
           className="inline-flex items-center gap-3 text-sm font-body tracking-wide group"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -203,7 +203,7 @@ const Hero = () => {
         >
           <span className="link-underline">Explore my work</span>
           <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
-        </motion.a>
+        </motion.button>
       </motion.div>
     </section>
   );
