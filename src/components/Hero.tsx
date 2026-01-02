@@ -99,13 +99,13 @@ const Hero = () => {
         // Calculate opacity and blur based on horizontal position
         // Right side: high opacity, sharp. Left side: low opacity, will be blurred by CSS
         const normalizedX = particle.x / canvas.width;
-        const opacityMultiplier = 0.2 + normalizedX * 0.8; // 0.2 at left, 1.0 at right
+        const opacityMultiplier = 0.4 + normalizedX * 0.6; // 0.4 at left, 1.0 at right (increased base)
         const finalOpacity = particle.opacity * opacityMultiplier;
 
-        // Draw particle
+        // Draw particle with vibrant primary color (teal/emerald)
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(25, 60%, 55%, ${finalOpacity})`;
+        ctx.arc(particle.x, particle.y, particle.size * 1.5, 0, Math.PI * 2); // Larger particles
+        ctx.fillStyle = `hsla(161, 93%, 40%, ${finalOpacity})`; // Using primary color
         ctx.fill();
       });
 
@@ -116,17 +116,17 @@ const Hero = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 120) {
+          if (distance < 150) { // Increased connection distance
             const avgX = (particles[i].x + particles[j].x) / 2;
             const normalizedX = avgX / canvas.width;
-            const opacityMultiplier = 0.1 + normalizedX * 0.9;
-            const opacity = (1 - distance / 120) * 0.15 * opacityMultiplier;
+            const opacityMultiplier = 0.3 + normalizedX * 0.7; // Increased base opacity
+            const opacity = (1 - distance / 150) * 0.4 * opacityMultiplier; // Much higher opacity
 
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `hsla(25, 60%, 55%, ${opacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `hsla(161, 93%, 45%, ${opacity})`; // Using primary color
+            ctx.lineWidth = 1; // Thicker lines
             ctx.stroke();
           }
         }
